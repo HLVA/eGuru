@@ -25,4 +25,12 @@ class User < ApplicationRecord
     end
   end
 
+  def display_name
+    if provider.present?
+      return name
+    else
+      return email
+    end
+  end
+
 end
