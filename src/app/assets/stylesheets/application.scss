@@ -48,7 +48,7 @@ body {
 }
 
 .content {
-	height: $content-height;
+	min-height: $content-height;
 	margin-top: -5px;
 }
 

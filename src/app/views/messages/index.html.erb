@@ -9,7 +9,7 @@
   <% if message.body %>
    <% user = User.find(message.user_id) %>
    <div class='item'>
-    <div class='content'>
+    <div class='messages-list'>
      <div class='header'><strong><%= user.email %></strong>     <%= message.message_time %></div>
       <div class='list'>
        <div class='item'>
@@ -25,7 +25,7 @@
 
 <%= form_for [@conversation, @message], html: {class: 'ui reply form'} do |f| %>
    <%= hidden_field_tag 'chat_room_id', params[:conversation_id] %>
-  <div class="form-group">
+  <div class="form-group row">
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control' %>
     <small class="text-muted">From 2 to 1000 characters</small>
