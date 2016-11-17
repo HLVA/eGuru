@@ -33,6 +33,11 @@ body {
 	background-image: url('http://i.imgur.com/8pjYPuX.jpg');
 }
 */
+
+.navbar{
+	background-color: rgba(91, 203, 255, 0.98);
+}
+
 .navbar-content{
 	margin-left: 60px;
 	margin-right: 70px;
@@ -44,7 +49,11 @@ body {
 
 .eguru-logo{
 	height: 10vh;
-	margin-bottom: -3vh;
+	/*margin-bottom: -3vh;*/
+}
+
+.navbar-brand{
+	margin-right: 40px;
 }
 
 .content {
@@ -54,7 +63,8 @@ body {
 
 footer{
 	border-top: 1px solid #dedede;
-	background-color: #f7f7f7;
+	/*background-color: #f7f7f7;*/
+	background-color: rgba(91, 203, 255, 0.98);
 	padding-bottom: 30px;
 	padding-top: 30px;
 }
@@ -73,4 +83,32 @@ footer{
 
 #navbar-header{
 	padding-top: 10px;	
+}
+
+.navbar-nav > li > a > span.menu-icon {
+	display: block;
+	font-size: 1.8em;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.navbar-nav > li > a{
+	color: #fff;
+}
+
+.navbar-nav > li > a:hover{
+    /*color: rgb(64, 64, 64);*/
+    text-decoration: none;
+    
+}
+
+.navbar-nav > li:hover{
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-nav > li{
+	text-align: center;
+	padding: 10px 5px;
+    margin: 0px 0px;
+	border-radius: 4px; 
 }
