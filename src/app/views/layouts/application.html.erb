@@ -31,6 +31,7 @@
                 <% if signed_in? -%>
 
                   <%= current_user.display_name %>
+                  <%= link_to t(".btn.find_friend"), new_friendship_path %>
                   <%= link_to t(".sign_out"), sign_out_path, method: :delete %>
 
                 <% else -%>

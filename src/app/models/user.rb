@@ -3,16 +3,8 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
   has_many :conversations, dependent: :destroy
-  # def self.from_omniauth(auth)
-  #   where(auth.slice(:privider, :uid)).first_or_initialize.tap do |user|
-  #     user.provider = auth.provider
-  #     user.uid = auth.uid
-  #     user.name = auth.info.name
-  #     user.auth_token = auth.credentials.token
-  #     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-  #     user.save
-  #   end
-  # end
+  has_many :friendships
+  has_many :friends, :through => :friendships
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -31,6 +23,14 @@ class User < ApplicationRecord
     else
       return email
     end
+  end
+
+  def self.users_are_not_already_friends (current_user)
+    if current_user.friends.present?
+	   User.where("(id not in (?)) and (id != ?)", current_user.friend_ids, current_user.id)
+   else
+    User.where("(id != ?)", current_user.id)
+   end
   end
 
 end

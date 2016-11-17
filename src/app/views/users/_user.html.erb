@@ -1,0 +1,8 @@
+<div class="card card-block">
+  <div class="card-block">
+  <%= link_to user.display_name, users_path(user.id) %>
+  </div>
+  <div class="card-block">
+    <%= link_to "Add Friend", friendships_path(:user=>user), method:"post", class:"btn btn-primary" %>
+  </div>
+</div>

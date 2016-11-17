@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friendships
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
+  get '/users/:id', to: 'users#show'
 resources :conversations do
   resources :messages
  end
