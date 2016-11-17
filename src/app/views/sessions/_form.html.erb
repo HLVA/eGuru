@@ -15,13 +15,13 @@
       </div>
 
       <div class="form-group row">
-        <%= form.submit "Singin",  class:"btn btn-primary col-sm-2 offset-sm-3" %>
+        <%= form.submit "Sign In",  class:"btn btn-primary col-sm-3 offset-sm-3" %>
         <% if Clearance.configuration.allow_sign_up? %>
-          <%= link_to t(".sign_up"), sign_up_path, class:"col-sm-4" %>
+          <%= link_to t(".sign_up"), sign_up_path, class:"btn" %>
         <% end %>
       </div>
       <div class="form-group row">
-        <a class="btn btn-social btn-facebook col-sm-6" href="/auth/facebook">
+        <a class="btn btn-social btn-facebook col-sm-6 offset-sm-3" href="/auth/facebook">
           <span class="fa fa-facebook">
           </span>
           Sign in Facebook
