@@ -2,7 +2,15 @@
   <div class="card-block">
   <%= link_to user.display_name, users_path(user.id) %>
   </div>
+  <% if action == "add_friend" %>
   <div class="card-block">
-    <%= link_to "Add Friend", friendships_path(:user=>user), method:"post", class:"btn btn-primary" %>
+    <%= link_to friendships_path(:friend_id=>user.id), method:"post", class:"btn btn-primary"  do %>
+      <%= t(".btn.add_friend") %>
+    <%end%>
   </div>
+  <% elsif action == "show" %>
+    <%= link_to friendships_path, method: "delete", :friend_id => user.id, class: "btn btn-primary" do %>
+     <%= t(".btn.remove_friend")%>
+    <% end %>
+  <%end%>
 </div>
