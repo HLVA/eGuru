@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="card">
+<div class="row">
+	<div class="col-md-6 user-list">
     <% current_user.friends.each do |friend| %>
     <%= render friend, :action=>"show" %>
     <% end %>
