@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  btn:
+    find_friend: "Find Friend"
+    remove_friend: "Remove Friend"
+    add_friend: "Add Friend"

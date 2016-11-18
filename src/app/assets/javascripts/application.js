@@ -16,7 +16,10 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap
+//= require underscore
+//= require gmaps/google
 //= require_tree .
+
 
 $(".nav li a").on("click", function(){
    $(".nav").find(".active").removeClass("active");
