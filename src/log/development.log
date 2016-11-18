@@ -7017,3 +7017,128 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+Started GET "/" for 127.0.0.1 at 2016-11-18 16:15:04 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TempController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "47f2fedca7363d88dae770dcad268bf06faa561d"], ["LIMIT", 1]]
+  Rendering temp/index.html.erb within layouts/application
+  Rendered temp/index.html.erb within layouts/application (18.1ms)
+Started GET "/" for 127.0.0.1 at 2016-11-18 16:15:25 +0700
+Completed 200 OK in 22897ms (Views: 22695.2ms | ActiveRecord: 14.0ms)
+
+
+Processing by TempController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "47f2fedca7363d88dae770dcad268bf06faa561d"], ["LIMIT", 1]]
+  Rendering temp/index.html.erb within layouts/application
+  Rendered temp/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 219ms (Views: 177.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/conversqtions" for 127.0.0.1 at 2016-11-18 16:15:38 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/conversqtions"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/adrien/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/adrien/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/adrien/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.8ms)
+  Rendered collection of /home/adrien/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [40 times] (113.9ms)
+  Rendered /home/adrien/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (63.8ms)
+  Rendering /home/adrien/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/adrien/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /home/adrien/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (313.5ms)
+Started GET "/conversations" for 127.0.0.1 at 2016-11-18 16:15:42 +0700
+Processing by ConversationsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "47f2fedca7363d88dae770dcad268bf06faa561d"], ["LIMIT", 1]]
+  Rendering conversations/index.html.erb within layouts/application
+  [1m[36mConversation Load (40.7ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations"[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered conversations/index.html.erb within layouts/application (124.4ms)
+Completed 200 OK in 550ms (Views: 266.3ms | ActiveRecord: 55.1ms)
+
+
+Started POST "/conversations?recipient_id=2&sender_id=1" for 127.0.0.1 at 2016-11-18 16:15:46 +0700
+Processing by ConversationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "recipient_id"=>"2", "sender_id"=>"1"}
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "47f2fedca7363d88dae770dcad268bf06faa561d"], ["LIMIT", 1]]
+  [1m[36mConversation Load (1.7ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE ((conversations.sender_id = '1' AND conversations.recipient_id = '2' ) OR (conversations.sender_id = '2' AND conversations.recipient_id = '1' ))[0m
+  [1m[36mConversation Load (1.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE ((conversations.sender_id = '1' AND conversations.recipient_id = '2' ) OR (conversations.sender_id = '2' AND conversations.recipient_id = '1' )) ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/conversations/1/messages
+Completed 302 Found in 25ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/conversations/1/messages" for 127.0.0.1 at 2016-11-18 16:15:46 +0700
+Processing by MessagesController#index as HTML
+  Parameters: {"conversation_id"=>"1"}
+  [1m[36mConversation Load (1.2ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Load (48.9ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1[0m  [["conversation_id", 1]]
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "47f2fedca7363d88dae770dcad268bf06faa561d"], ["LIMIT", 1]]
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [9 times] (14.7ms)
+  Rendered messages/index.html.erb within layouts/application (129.3ms)
+Completed 200 OK in 660ms (Views: 399.8ms | ActiveRecord: 65.4ms)
+
+
+Started POST "/conversations/1/messages" for 127.0.0.1 at 2016-11-18 16:15:54 +0700
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "conversation_id"=>"1", "message"=>{"body"=>"Hello", "user_id"=>"1"}, "commit"=>"Add Reply"}
+  [1m[36mConversation Load (3.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (30.2ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "created_at", "updated_at", "conversation_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Hello"], ["user_id", 1], ["created_at", 2016-11-18 09:15:54 UTC], ["updated_at", 2016-11-18 09:15:54 UTC], ["conversation_id", 1]]
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] Enqueued MessageBroadcastJob (Job ID: eafcf090-f19f-4abe-a20d-5f99e8a4b505) to Async(default) with arguments: #<GlobalID:0x007f1f03643420 @uri=#<URI::GID gid://e-guru/Message/9>>
+Redirected to http://localhost:3000/conversations/1/messages
+Completed 302 Found in 274ms (ActiveRecord: 51.1ms)
+
+
+Started GET "/conversations/1/messages" for 127.0.0.1 at 2016-11-18 16:15:54 +0700
+Processing by MessagesController#index as HTML
+  Parameters: {"conversation_id"=>"1"}
+  [1m[36mMessage Load (3.4ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [eafcf090-f19f-4abe-a20d-5f99e8a4b505] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f1f036ad398 @uri=#<URI::GID gid://e-guru/Message/9>>
+  [1m[36mConversation Load (0.9ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [eafcf090-f19f-4abe-a20d-5f99e8a4b505]   [1m[36mConversation Load (3.2ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Load (4.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1[0m  [["conversation_id", 1]]
+[ActiveJob] [MessageBroadcastJob] [eafcf090-f19f-4abe-a20d-5f99e8a4b505]   [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [eafcf090-f19f-4abe-a20d-5f99e8a4b505]   Rendered messages/_message.html.erb (39.0ms)
+[ActiveJob] [MessageBroadcastJob] [eafcf090-f19f-4abe-a20d-5f99e8a4b505] [ActionCable] Broadcasting to chat_rooms_1_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <div class=\"message_content\">\n          <span class=\"text-muted\">gonzalez_ad@hotmail.fr at  says</span><br>\n          Hello\n        </div>\n        </p>\n      </div>\n    </div>\n\n  </div>\n</div>\n<script>\nfunction myFunction(){\n  var content = $(\"#message_content\").val();\n  App.messages.create(content);\n}\n</script>"}
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "47f2fedca7363d88dae770dcad268bf06faa561d"], ["LIMIT", 1]]
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [10 times] (16.5ms)
+  Rendered messages/index.html.erb within layouts/application (33.9ms)
+Completed 200 OK in 461ms (Views: 374.9ms | ActiveRecord: 15.5ms)
+
+
+[ActiveJob] [MessageBroadcastJob] [eafcf090-f19f-4abe-a20d-5f99e8a4b505] Performed MessageBroadcastJob from Async(default) in 513.11ms
