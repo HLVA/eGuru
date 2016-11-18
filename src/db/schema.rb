@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20161113101843) do
- 0cdd79eafe40159a2f4404f0b01b9c9cc5fa3a04
+ActiveRecord::Schema.define(version: 20161118081521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +20,18 @@ ActiveRecord::Schema.define(version: 20161113101843) do
     t.integer  "recipient_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "location"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -40,15 +50,12 @@ ActiveRecord::Schema.define(version: 20161113101843) do
     t.string   "encrypted_password", limit: 128, null: false
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
-<<<<<<< HEAD
     t.string   "avatar"
-=======
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
->>>>>>> 0cdd79eafe40159a2f4404f0b01b9c9cc5fa3a04
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
