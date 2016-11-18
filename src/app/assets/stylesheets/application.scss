@@ -58,7 +58,7 @@ body {
 
 .content {
 	min-height: $content-height;
-	margin-top: -5px;
+	margin-top: 20px;
 }
 
 footer{
@@ -111,4 +111,25 @@ footer{
 	padding: 10px 5px;
     margin: 0px 0px;
 	border-radius: 4px; 
+}
+
+.avartar-user-list{
+	width: 80px;
+	height: 80px;
+	border: 1px solid;
+	padding: 3px;
+	border-radius: 4px;
+	border-color: rgba(91, 203, 255, 0.98);
+	margin-right: 10px;
+}
+
+.user-list-card{
+	/*border-left: none;
+	border-right: none;
+    border-radius: 0px;	*/
+    border: none;
+}
+
+.horizontal-line{
+	border-color: rgba(91, 203, 255, 0.98);
 }

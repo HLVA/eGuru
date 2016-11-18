@@ -1,3 +1,7 @@
-<% @users.each do |user| %>
-  <%= render user, :action=>"add_friend" %>
-<% end %>
+<div class="row">
+	<div class="col-md-6">
+		<% @users.each do |user| %>
+		  <%= render user, :action=>"add_friend" %>
+		<% end %>
+	</div>	
+</div>
