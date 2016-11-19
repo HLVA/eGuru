@@ -26,6 +26,19 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def accept_friend
+
+      @friendship = Friendship.new(user_id:current_user.id, friend_id:params[:friend_id])
+      if @friendship.save
+        flash[:success] = "You are now friend with " + User.find(params[:friend_id]).display_name
+        redirect_to(:back)
+      else
+        flash[:error] = "Error occurs: " + @friendship.errors.full_messages.to_sentence
+        redirect_to(:back) 
+      end
+
+  end
+
   def destroy
     current_user.unfriend(params[:id])
     flash[:success] = "You've removed friend successfully"

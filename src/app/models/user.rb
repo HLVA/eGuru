@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, :through => :friendships
 
+  has_many :friend_requests, class_name:"Friendship", foreign_key: :friend_id
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -15,6 +17,10 @@ class User < ApplicationRecord
       user.encrypted_password = ""
       user.save(:validate => false)
     end
+  end
+
+  def unconfirmed_friend_requests
+    return friend_requests.select{|request| friend_ids.exclude?(request.user.id)}
   end
 
   def display_name
@@ -30,6 +36,10 @@ class User < ApplicationRecord
     if @friendship
       @friendship.destroy
     end
+  end
+
+  def friend_confirmed (friend_id)
+    friends.any? {|friend| friend.id == friend_id} && friend_requests.any? {|request| request.user_id == friend_id}
   end
 
   def self.users_are_not_already_friends (current_user, search)

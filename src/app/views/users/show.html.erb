@@ -27,4 +27,22 @@
       </div>
     </div>
   </div>
+
+  <% if @user.friend_requests.length > 0 %>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"> <%= t("friend_invitations") %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="card card-outline-primary user-card">
+
+          <% @user.unconfirmed_friend_requests.each do |friendship| %>
+          <%= render 'friendships/invitation', :friendship=>friendship, :action=>"show"%>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end%>
 </div>
