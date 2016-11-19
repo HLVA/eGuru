@@ -25,6 +25,13 @@ class User < ApplicationRecord
     end
   end
 
+  def unfriend(friend_id)
+    @friendship = Friendship.find(friend_id)
+    if @friendship
+      @friendship.destroy
+    end
+  end
+
   def self.users_are_not_already_friends (current_user)
     if current_user.friends.present?
 	   User.where("(id not in (?)) and (id != ?)", current_user.friend_ids, current_user.id)

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
   get '/users/:id', to: 'users#show'
+  get 'show_user' => 'users#show'
 resources :conversations do
   resources :messages
  end

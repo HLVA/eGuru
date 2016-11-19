@@ -45,13 +45,13 @@
 
               <li class="nav-item float-xs-right">
                 <%= link_to new_friendship_path do %>
-                  <span class="menu-icon fa fa-plus-circle"></span>
+                  <span class="menu-icon fa fa-user-plus"></span>
                   <%= t(".btn.find_friend") %>
                 <% end %>
               </li>
 
                 <li class="nav-item float-xs-right">
-                  <%= link_to '#' do %>
+                  <%= link_to show_user_path(:id=>current_user.id) do %>
                       <span class="menu-icon fa fa-user-circle"></span>
                       <%= current_user.display_name %>
                     <% end %>

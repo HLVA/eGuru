@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20161117151108) do
-
+ActiveRecord::Schema.define(version: 20161118081521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +22,6 @@ ActiveRecord::Schema.define(version: 20161117151108) do
     t.datetime "updated_at",   null: false
   end
 
-
   create_table "experiences", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -35,13 +32,13 @@ ActiveRecord::Schema.define(version: 20161117151108) do
     t.integer  "tag_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-=======
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
->>>>>>> 5621969ef908a4cd445d097d4a986c01c7a200b4
   end
 
   create_table "messages", force: :cascade do |t|
@@ -60,19 +57,12 @@ ActiveRecord::Schema.define(version: 20161117151108) do
     t.string   "encrypted_password", limit: 128, null: false
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
-<<<<<<< HEAD
-    t.string   "avatar"
-=======
->>>>>>> 5621969ef908a4cd445d097d4a986c01c7a200b4
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-<<<<<<< HEAD
-=======
     t.string   "avatar"
->>>>>>> 5621969ef908a4cd445d097d4a986c01c7a200b4
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end

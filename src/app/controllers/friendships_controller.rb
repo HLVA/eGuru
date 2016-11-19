@@ -26,5 +26,8 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
+    current_user.unfriend(params[:id])
+    flash[:success] = "You've removed friend successfully"
+    redirect_to(:back)
   end
 end

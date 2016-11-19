@@ -21,7 +21,10 @@
 
 en:
   hello: "Hello world"
+  basic_info: "Basic Info"
+  friends: "Friends"
+  no_friend_text: "You have no friend now"
   btn:
     find_friend: "Find Friend"
-    remove_friend: "Remove Friend"
+    remove_friend: "Unfriend"
     add_friend: "Add Friend"
