@@ -66,3 +66,6 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-sass'
 gem 'gmaps4rails'
+
+# For admin
+gem 'rails_admin', '~> 1.0'

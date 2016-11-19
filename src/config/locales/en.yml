@@ -24,6 +24,12 @@ en:
   basic_info: "Basic Info"
   friends: "Friends"
   no_friend_text: "You have no friend now"
+
+  # menu text
+  menu:
+    amdin: "Admin"
+    messages: "Messages"
+  #button text
   btn:
     find_friend: "Find Friend"
     remove_friend: "Unfriend"
