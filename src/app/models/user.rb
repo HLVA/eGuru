@@ -32,12 +32,18 @@ class User < ApplicationRecord
     end
   end
 
-  def self.users_are_not_already_friends (current_user)
+  def self.users_are_not_already_friends (current_user, search)
+
     if current_user.friends.present?
-	   User.where("(id not in (?)) and (id != ?)", current_user.friend_ids, current_user.id)
-   else
-    User.where("(id != ?)", current_user.id)
-   end
+	   @result = User.where("(id not in (?)) and (id != ?)", current_user.friend_ids, current_user.id)
+    else
+     @result = User.where("(id != ?)", current_user.id)
+    end
+
+    if search
+      @result = @result.where("email like ?","%#{search}%")
+    end
+    return @result
   end
 
 end

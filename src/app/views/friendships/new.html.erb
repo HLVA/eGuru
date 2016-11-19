@@ -1,7 +1,22 @@
 <div class="row">
+	<%= form_tag nil, :method=>"get", class:"pjax-form form-inline" do %>
+		<input name="utf8" value="✓" type="hidden">
+		<div class="well">
+			<span id="filters_box"></span>
+			<hr class="filters_box" style="display:none">
+			<div class="input-group">
+
+				<%=text_field_tag 'search', nil, class:"form-control input-small", placeholder: 'Filter...'%>
+				<span class="input-group-btn">
+					<%= submit_tag (t('btn.search')), class:"btn btn-primary" %>
+				</span>
+			</div>
+		</div>
+
+	<% end %>
 	<div class="col-md-6 user-list">
 		<% @users.each do |user| %>
 		  <%= render user, :action=>"add_friend" %>
 		<% end %>
-	</div>	
+	</div>
 </div>
