@@ -39,7 +39,7 @@ function getPosition(address, callback){
 				callback(position);
 
 			} else {
-				return false;
+				callback(position);
 
 			}
 		});
@@ -49,8 +49,8 @@ function getPosition(address, callback){
 };
 
 
-function setMap(){
-	getPosition('Vincom B, Lê Thánh Tôn, Bến Nghé, Ho Chi Minh, Vietnam', function(position){
+function setMap(address){
+	getPosition(address, function(position){
 
 			handler = Gmaps.build('Google');
 			handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
