@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :questions
   get 'general/aboutus'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
