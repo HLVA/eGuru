@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, :through => :friendships
 
+  has_many :friend_requests, class_name:"Friendship", foreign_key: :friend_id
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -17,6 +19,10 @@ class User < ApplicationRecord
     end
   end
 
+  def unconfirmed_friend_requests
+    return friend_requests.select{|request| friend_ids.exclude?(request.user.id)}
+  end
+
   def display_name
     if provider.present?
       return name
@@ -25,12 +31,29 @@ class User < ApplicationRecord
     end
   end
 
-  def self.users_are_not_already_friends (current_user)
+  def unfriend(friend_id)
+    @friendship = Friendship.find(friend_id)
+    if @friendship
+      @friendship.destroy
+    end
+  end
+
+  def friend_confirmed (friend_id)
+    friends.any? {|friend| friend.id == friend_id} && friend_requests.any? {|request| request.user_id == friend_id}
+  end
+
+  def self.users_are_not_already_friends (current_user, search)
+
     if current_user.friends.present?
-	   User.where("(id not in (?)) and (id != ?)", current_user.friend_ids, current_user.id)
-   else
-    User.where("(id != ?)", current_user.id)
-   end
+	   @result = User.where("(id not in (?)) and (id != ?)", current_user.friend_ids, current_user.id)
+    else
+     @result = User.where("(id != ?)", current_user.id)
+    end
+
+    if search
+      @result = @result.where("email like ?","%#{search}%")
+    end
+    return @result
   end
 
 end

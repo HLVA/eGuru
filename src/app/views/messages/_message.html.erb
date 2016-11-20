@@ -5,11 +5,19 @@
       </div>
       <div class="col-md-11">
         <p class="card-text">
-          <span class="text-muted"><%= message.user.email %> at <%= message.timestamp %> says</span><br>
+          <div class="message_content">
+          <span class="text-muted"><%= message.conversation.user.email %> at  says</span><br>
           <%= message.body %>
+        </div>
         </p>
       </div>
     </div>
 
   </div>
 </div>
+<script>
+function myFunction(){
+  var content = $("#message_content").val();
+  App.messages.create(content);
+}
+</script>

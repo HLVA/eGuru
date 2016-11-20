@@ -30,12 +30,19 @@
               <li class="nav-item">
                 <%= link_to conversations_path, class:"" do %>
                   <span class="menu-icon fa fa-comments"></span>
-                  Messages
+                  <%= t('messages') %>
                 <% end %>
               </li>
 
             <% if signed_in? -%>
-
+              <% if current_user.admin %>
+                <li class="nav-item">
+                  <%= link_to rails_admin_path, class:"" do %>
+                    <span class="menu-icon fa fa-cog"></span>
+                    <%= t('menu.admin') %>
+                  <% end %>
+                </li>
+              <% end %>
               <li class="nav-item float-xs-right">
                 <%= link_to sign_out_path, method: :delete do %>
                   <span class="menu-icon fa fa-sign-out"></span>
@@ -45,13 +52,13 @@
 
               <li class="nav-item float-xs-right">
                 <%= link_to new_friendship_path do %>
-                  <span class="menu-icon fa fa-plus-circle"></span>
+                  <span class="menu-icon fa fa-user-plus"></span>
                   <%= t(".btn.find_friend") %>
                 <% end %>
               </li>
 
                 <li class="nav-item float-xs-right">
-                  <%= link_to '#' do %>
+                  <%= link_to show_user_path(:id=>current_user.id) do %>
                       <span class="menu-icon fa fa-user-circle"></span>
                       <%= current_user.display_name %>
                     <% end %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @experience.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @experience.content %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @experience.location %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @experience.rating %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @experience.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @experience.category_id %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @experience.tag_id %>
+</p>
+
+<%= link_to 'Edit', edit_experience_path(@experience) %> |
+<%= link_to 'Back', experiences_path %>

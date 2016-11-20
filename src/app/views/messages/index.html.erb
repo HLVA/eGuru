@@ -4,6 +4,13 @@
  <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
+<div class='messages' data-conversation-id="<%= params[:conversation_id]%>">
+  <%= render @conversation.messages %>
+</div>
+
+<%= form_for [@conversation, Message.new], html: {class: 'ui reply form'} do |f| %>
+   <%= hidden_field_tag 'conversation_id', params[:conversation_id] %>
+  <div class="form-group">
 <div class='messages' data-chat-room-id="<%= params[:conversation_id]%>">
  <% @messages.each do |message| %>
   <% if message.body %>
@@ -26,6 +33,7 @@
 <%= form_for [@conversation, @message], html: {class: 'ui reply form'} do |f| %>
    <%= hidden_field_tag 'chat_room_id', params[:conversation_id] %>
   <div class="form-group row">
+
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control' %>
     <small class="text-muted">From 2 to 1000 characters</small>

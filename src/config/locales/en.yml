@@ -21,7 +21,21 @@
 
 en:
   hello: "Hello world"
+  basic_info: "Basic Info"
+  friends: "Friends"
+  friend_invitations: "Friend invitations"
+  no_friend_text: "You have no friend now"
+  wait_for_confirmation: "Waiting for confirmation..."
+
+  # menu text
+  menu:
+    amdin: "Admin"
+    messages: "Messages"
+  #button text
   btn:
     find_friend: "Find Friend"
-    remove_friend: "Remove Friend"
+    remove_friend: "Unfriend"
     add_friend: "Add Friend"
+    search: "Search"
+    send_messages: "Send messages"
+    accept: "Accept"

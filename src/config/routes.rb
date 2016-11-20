@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+
   get 'general/aboutus'
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :experiences
+
   resources :friendships
+  post 'accept_friend' => 'friendships#accept_friend'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -11,6 +17,7 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
   get '/users/:id', to: 'users#show'
+  get 'show_user' => 'users#show'
 resources :conversations do
   resources :messages
  end

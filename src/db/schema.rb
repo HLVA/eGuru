@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117151108) do
+ActiveRecord::Schema.define(version: 20161119042743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20161117151108) do
     t.integer  "recipient_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "location"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -51,6 +63,7 @@ ActiveRecord::Schema.define(version: 20161117151108) do
     t.string   "uid"
     t.string   "name"
     t.string   "avatar"
+    t.boolean  "admin"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end

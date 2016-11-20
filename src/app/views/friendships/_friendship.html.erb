@@ -1,0 +1,35 @@
+<div class="card card-outline-primary user-card">
+
+  <div class="card-block">
+      <%= link_to users_path(friendship.friend.id) do %>
+        <img src="https://raw.githubusercontent.com/HLVA/eGuru/master/src/app/assets/images/eGuruLogo.png" class="avartar-user-list float-xs-left">
+      <% end %>
+
+      <% if action == "add_friend" %>
+      <%= link_to friendships_path(:friend_id=>friendship.friend.id), method:"post", class:"btn btn-primary btn-sm float-xs-right col-xs"  do %>
+        <span class="menu-icon fa fa-user-plus"></span> <%= t(".btn.add_friend") %>
+      <%end%>
+    <% elsif action == "show" %>
+      <div class="float-xs-right">
+        <div class="row">
+        <%= link_to friendship_path(:id=>friendship.id), method:"delete", class: "btn btn-primary btn-sm" do %>
+          <span class="menu-icon fa fa-user-times"></span> <%= t(".btn.remove_friend")%>
+        <% end %>
+      </div>
+        <% if current_user.friend_confirmed(friendship.friend.id) %>
+        <div class="row top-margin">
+            <%= link_to root_path, class:"btn btn-primary btn-sm" do %>
+              <span class="menu-icon fa fa-comments"></span> <%= (t('btn.send_messages'))%>
+            <%end %>
+          </div>
+        <%end%>
+      </div>
+    <%end%>
+    <%= link_to friendship.friend.display_name, users_path(friendship.friend.id) %>
+    <% if not current_user.friend_confirmed(friendship.friend.id) %>
+      <p> <%= t('wait_for_confirmation') %>
+    <%end%>
+
+  </div>
+  <hr class="horizontal-line" />
+</div>
