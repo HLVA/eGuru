@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'general/aboutus'
+
   resources :friendships
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
