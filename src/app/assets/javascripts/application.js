@@ -49,16 +49,16 @@ function getPosition(address, callback){
 };
 
 
-function setMap(address){
+function setMap(address, map_id, info){
 	getPosition(address, function(position){
 
 			handler = Gmaps.build('Google');
-			handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+			handler.buildMap({ provider: {}, internal: {id: map_id}}, function(){
 			  markers = handler.addMarkers([
 			    {
 			      "lat": position.lat(),
 			      "lng": position.lng(),
-			      "infowindow": "hello!"
+			      "infowindow": info
 			    }
 			  ]);
 			  handler.bounds.extendWith(markers);

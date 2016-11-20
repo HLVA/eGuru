@@ -27,12 +27,7 @@
                 Home
                 <% end %>
               </li>
-              <li class="nav-item">
-                <%= link_to conversations_path, class:"" do %>
-                  <span class="menu-icon fa fa-comments"></span>
-                  <%= t('messages') %>
-                <% end %>
-              </li>
+              
 
             <% if signed_in? -%>
               <% if current_user.admin %>
@@ -43,6 +38,18 @@
                   <% end %>
                 </li>
               <% end %>
+              <li class="nav-item">
+                <%= link_to conversations_path, class:"" do %>
+                  <span class="menu-icon fa fa-comments"></span>
+                  <%= t('messages') %>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to friendships_path, class:"" do %>
+                  <span class="menu-icon fa fa-address-book"></span>
+                  <%= t('Friendships') %>
+                <% end %>
+              </li>
               <li class="nav-item float-xs-right">
                 <%= link_to sign_out_path, method: :delete do %>
                   <span class="menu-icon fa fa-sign-out"></span>
@@ -85,6 +92,7 @@
 
   <footer class="text-xs-center">
     <p>&copy; eGuru - Developed by HLVA Team</p>
+    <%= link_to 'About us', about_us_path %>
   </footer>
 
 </body>
