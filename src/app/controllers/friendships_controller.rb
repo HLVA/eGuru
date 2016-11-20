@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new(user_id:current_user.id, friend_id: @friend.id)
     if @friendship.save
       flash[:success] = "Adding friendship successfully"
-      redirect_to friendships_path
+      redirect_to new_friendship_path
     else
       flash[:error] = "Cannot add friendships because of the error: " + @friendship.errors.full_messages.to_sentence
     end
@@ -34,7 +34,7 @@ class FriendshipsController < ApplicationController
         redirect_to(:back)
       else
         flash[:error] = "Error occurs: " + @friendship.errors.full_messages.to_sentence
-        redirect_to(:back) 
+        redirect_to(:back)
       end
 
   end

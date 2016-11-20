@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   end
   get '/users/:id', to: 'users#show'
   get 'show_user' => 'users#show'
+  get 'edit_user' => 'user#edit'
+  get 'user_profile' => 'users#profile'
 resources :conversations do
   resources :messages
  end

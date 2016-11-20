@@ -31,10 +31,15 @@ class User < ApplicationRecord
     end
   end
 
-  def unfriend(friend_id)
-    @friendship = Friendship.find(friend_id)
+  def unfriend(friendship_id)
+    @friendship = Friendship.find(friendship_id)
     if @friendship
       @friendship.destroy
+      # handle delete 2-way friendship
+      @friend_request = friend_requests.find {|request| request.user_id==@friendship.friend_id && request.friend_id==@friendship.user_id}
+      if @friend_request
+        @friend_request.destroy
+      end
     end
   end
 
