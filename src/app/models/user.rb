@@ -13,6 +13,8 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid      = auth.uid
       user.name     = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.email  = auth.uid.to_s + "@dummy.com"
       user.encrypted_password = ""
       user.save(:validate => false)

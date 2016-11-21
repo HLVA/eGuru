@@ -35,6 +35,8 @@ resources :conversations do
 
   # For fb login
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
