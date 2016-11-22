@@ -4,7 +4,7 @@ class SessionsController < Clearance::SessionsController
       @user = User.from_omniauth(env["omniauth.auth"])
 
       session[:user_id] = @user.id
-      flash[:success] = "loggin successfully, token="
+      flash[:success] = "loggin successfully"
       sign_in(@user)
       redirect_to root_url
     end

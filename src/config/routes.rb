@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :categories
+  resources :questions
   get 'about_us' => 'general#aboutus'
   get 'send_mail' => 'general#send_mail'
 
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
   end
   get '/users/:id', to: 'users#show'
   get 'show_user' => 'users#show'
+  get 'edit_user' => 'user#edit'
+  get 'user_profile' => 'users#profile'
 resources :conversations do
   resources :messages
  end
@@ -32,6 +36,8 @@ resources :conversations do
 
   # For fb login
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
