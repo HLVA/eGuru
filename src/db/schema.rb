@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120101612) do
+ActiveRecord::Schema.define(version: 20162122181123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20161120101612) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "tag_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "report",      default: false
+    t.integer  "photo_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -54,6 +56,17 @@ ActiveRecord::Schema.define(version: 20161120101612) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "conversation_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.text     "content"
+    t.string   "link"
+    t.string   "avatar"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.integer  "experience_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -73,12 +86,12 @@ ActiveRecord::Schema.define(version: 20161120101612) do
     t.string   "encrypted_password", limit: 128, null: false
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
+    t.string   "avatar"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "avatar"
     t.boolean  "admin"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree

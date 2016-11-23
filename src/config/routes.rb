@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :photos
   resources :categories
   resources :questions
   get 'about_us' => 'general#aboutus'
+  get 'send_mail' => 'general#send_mail'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :experiences

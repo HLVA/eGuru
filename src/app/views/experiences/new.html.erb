@@ -1,5 +1,86 @@
 <h1>New Experience</h1>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Add photo
+</button>
+<%= form_for(@experience,remote: true) do |f| %>
+  <% if @experience.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
 
-<%= render 'form', experience: @experience %>
+      <ul>
+      <% @experience.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="oui" id="container_post">     
+     <%= f.hidden_field :photo_id, value: params[:photo_id] %>
+    </div>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<div class="container">
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+
+<%= form_for(@photo,remote: true) do |h| %>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Photo</h4>
+      </div>
+      <div class="modal-body">
+      	 <div class="field">
+          <%= h.file_field :avatar, class: "form-control venue_name" %><br>
+        </div>
+      <div class="field">
+          <%= h.label :content %><br>
+          <%= h.text_area :content, class: "form-control venue_name"%>
+        </div>
+        
+         <div class="field">
+          <%= h.hidden_field :user_id, value: current_user.id, class: "form-control venue_full_address"%>
+        </div>
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewpostclose">Close</button>
+        <%= submit_tag "Create", class: "btn btn-primary"%>
+      </div>
+      </div>
+    </div>
+  </div>
+<%end%>
+
+</div>
 
 <%= link_to 'Back', experiences_path %>

@@ -1,5 +1,7 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
+   skip_before_filter :verify_authenticity_token
+
 
   # GET /experiences
   # GET /experiences.json
@@ -10,11 +12,18 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1
   # GET /experiences/1.json
   def show
+    @experience= Experience.find(params[:id])
+    @photo= Photo.find(@experience.photo_id)
+
   end
 
   # GET /experiences/new
   def new
+    @photo1= Photo.last
     @experience = Experience.new
+    @photo= Photo.new
+
+    uploader = AvatarUploader.new
   end
 
   # GET /experiences/1/edit
@@ -30,9 +39,11 @@ class ExperiencesController < ApplicationController
       if @experience.save
         format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
         format.json { render :show, status: :created, location: @experience }
+
       else
         format.html { render :new }
         format.json { render json: @experience.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -69,6 +80,6 @@ class ExperiencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:title, :content, :location, :rating, :user_id, :category_id, :tag_id)
+      params.require(:experience).permit(:title, :content, :location, :rating, :user_id, :category_id, :tag_id, :report , :photo_id,:avatar)
     end
 end
