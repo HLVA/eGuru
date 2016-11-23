@@ -6,7 +6,7 @@ Submitted by: **HLVA Team**
 
 Time spent: **X** hours
 
-URL: **Insert your Heroku URL here**
+URL: https://sleepy-castle-68624.herokuapp.com
 
 ## User Stories
 
