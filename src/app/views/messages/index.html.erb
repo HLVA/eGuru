@@ -29,6 +29,7 @@
  <% end %>
 <% end %>
 </div>
+<% end %>
 
 <%= form_for [@conversation, @message], html: {class: 'ui reply form'} do |f| %>
    <%= hidden_field_tag 'chat_room_id', params[:conversation_id] %>
