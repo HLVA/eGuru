@@ -4,9 +4,38 @@
 			<%= link_to 'Show Previous', '?m=all' %>
 		<% end %>
 
+
+<div class='messages' data-conversation-id="<%= params[:conversation_id]%>">
+  <%= render @conversation.messages %>
+</div>
+
+<%= form_for [@conversation, Message.new], html: {class: 'ui reply form'} do |f| %>
+   <%= hidden_field_tag 'conversation_id', params[:conversation_id] %>
+  <div class="form-group">
+<div class='messages' data-chat-room-id="<%= params[:conversation_id]%>">
+ <% @messages.each do |message| %>
+  <% if message.body %>
+   <% user = User.find(message.user_id) %>
+   <div class='item'>
+    <div class='messages-list'>
+     <div class='header'><strong><%= user.email %></strong>     <%= message.message_time %></div>
+      <div class='list'>
+       <div class='item'>
+        <i class='right triangle icon'></i>
+         <%= message.body %>
+      </div>
+    </div>
+   </div>
+ </div>
+ <% end %>
+<% end %>
+</div>
+<% end %>
+
 		<div class='messages' data-conversation-id="<%= params[:conversation_id]%>">
 			<%= render @conversation.messages %>
 		</div>
+
 
 		<%= text_field_tag :content, nil, required: true, class: 'form-control form-block', placeholder: "Type a message..." %>
 
