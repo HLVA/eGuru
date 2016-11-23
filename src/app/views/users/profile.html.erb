@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"> <%= t("basic_info") %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="card card-block">
+        <h4> <%= @user.display_name %> </h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"> <%= t("friends") %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="card card-outline-primary user-card">
+        <% if @user.friendships.length > 0 %>
+        <% @user.friendships.each do |friendship| %>
+        <%= render friendship, :action=>"show"%>
+        <%end%>
+        <% else %>
+          <p> <%= t('no_friend_text') %> </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% if @user.unconfirmed_friend_requests.length > 0 %>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"> <%= t("friend_invitations") %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="card card-outline-primary user-card">
+
+          <% @user.unconfirmed_friend_requests.each do |friendship| %>
+          <%= render 'friendships/invitation', :friendship=>friendship, :action=>"show"%>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end%>
+
+  <%= link_to (t("find_friend")), new_friendship_path, class:"btn btn-primary" %>
+</div>
