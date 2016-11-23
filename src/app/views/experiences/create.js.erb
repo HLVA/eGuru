@@ -1,0 +1,5 @@
+$("#myModal").modal('hide');
+$(".venue_name").val('');
+$(".venue_full_address").val('');
+$(".venue_region").val('');
+$("#container_post").prepend('<%= j f.hidden_field :photo_id, value: @photo.id %>');

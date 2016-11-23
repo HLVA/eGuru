@@ -1,8 +1,9 @@
 <div class="container">
-  <div class="row">
-<% if @over_ten %>
- <%= link_to 'Show Previous', '?m=all' %>
-<% end %>
+	<div class="row">
+		<% if @over_ten %>
+			<%= link_to 'Show Previous', '?m=all' %>
+		<% end %>
+
 
 <div class='messages' data-conversation-id="<%= params[:conversation_id]%>">
   <%= render @conversation.messages %>
@@ -31,20 +32,26 @@
 </div>
 <% end %>
 
-<%= form_for [@conversation, @message], html: {class: 'ui reply form'} do |f| %>
-   <%= hidden_field_tag 'chat_room_id', params[:conversation_id] %>
-  <div class="form-group row">
+		<div class='messages' data-conversation-id="<%= params[:conversation_id]%>">
+			<%= render @conversation.messages %>
+		</div>
 
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control' %>
-    <small class="text-muted">From 2 to 1000 characters</small>
-  </div>
- <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
- <div>
-   <%= f.submit 'Add Reply', class: 'ui blue labeled submit icon button' %>
- </div>
 
-<% end %>
+		<%= text_field_tag :content, nil, required: true, class: 'form-control form-block', placeholder: "Type a message..." %>
 
+		<button id="send-content" type="button">Send</button>
+	</div>
 </div>
-</div>
+
+<script>
+$(function () {
+	var conversationId = <%= @conversation.id %>;
+	var userId = <%= current_user.id %>;
+	$('#send-content').click(function (evt) {
+		var content = $('#content').val();
+		console.log('hello', content);
+		App.global_chat.send_message(content,conversationId);
+	});
+});
+
+</script>

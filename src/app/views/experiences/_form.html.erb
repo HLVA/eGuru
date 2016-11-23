@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+        <div class="oui" id="container_post">     
+     <%= f.hidden_field :photo_id, value: @photo.id %>
+    </div>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
