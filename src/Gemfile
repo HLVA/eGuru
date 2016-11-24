@@ -68,6 +68,7 @@ gem 'google-api-client', '~> 0.9'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-sass'
 gem 'gmaps4rails'
+gem 'fb_graph2'
 
 # For admin
 gem 'rails_admin', '~> 1.0'

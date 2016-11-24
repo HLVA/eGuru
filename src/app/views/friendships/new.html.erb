@@ -19,4 +19,10 @@
 		  <%= render user, :action=>"add_friend" %>
 		<% end %>
 	</div>
+	<% if (@user.nil? or @user.count < 1) and (params[:is_facebook].present? and params[:is_facebook]==true) %>
+	<div class="card card-block">
+		<p> <%=  t('no_fb_friend') %> <%= link_to (t('invite_friend')), root_path %> </p>
+		<%= link_to t('btn.find_others'), new_friendship_path, class:"btn btn-primary" %>
+	</div>
+	<% end%>
 </div>

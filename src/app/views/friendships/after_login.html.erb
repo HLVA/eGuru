@@ -1,0 +1,11 @@
+<div class="card card-block">
+    <p>
+      <% if current_user.is_facebook_user %>
+        <%=t('msg.find_facebook_friends_question') %>
+      <% else %>
+        <%=t('msg.find_friends_question') %>
+      <% end %>
+    <p>
+    <%= link_to (t('btn.find_friend')), new_friendship_path(:is_facebook=>current_user.is_facebook_user), class:"btn btn-primary" %>
+    <%= link_to (t('btn.skip')), root_path, class:"btn btn-default" %>
+</div>

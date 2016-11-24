@@ -5,7 +5,7 @@ class SessionsController < Clearance::SessionsController
       session[:user_id] = @user.id
       flash[:success] = "loggin successfully"
       sign_in(@user)
-      redirect_to root_url
+      redirect_to after_login_path
     end
   end
 end
