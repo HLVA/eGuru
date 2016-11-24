@@ -37,3 +37,18 @@
 <br>
 
 <%= link_to 'New Experience', new_experience_path %>
+
+<% @experiences.each do |experience| %>
+  <div class="card">
+    <div class="card-block">
+      <%= link_to experience.title, experience_path(experience.id), class: 'card-title' %>
+      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+    </div>
+    <img src= "" >
+    <div class="card-block">
+      <p class="card-text"><%= experience.content %></p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+<% end %>

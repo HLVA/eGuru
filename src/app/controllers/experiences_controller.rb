@@ -34,7 +34,7 @@ class ExperiencesController < ApplicationController
   # POST /experiences.json
   def create
     @experience = Experience.new(experience_params)
-
+raise 'abc'
     respond_to do |format|
       if @experience.save
         format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
@@ -80,6 +80,6 @@ class ExperiencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:title, :content, :location, :rating, :user_id, :category_id, :tag_id, :report , :photo_id,:avatar)
+      params.require(:experience).permit(:title, :content, :location, :rating, :user_id, :category_id, :tag_id, :report , :photo_id, pictures: [])
     end
 end

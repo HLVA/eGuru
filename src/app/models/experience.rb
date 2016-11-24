@@ -1,5 +1,5 @@
 class Experience < ApplicationRecord
-	mount_uploader :avatar, AvatarUploader
+	mount_uploader :photos, AvatarUploader
 
-	belongs_to :photo
+	# has_many :photos
 end
