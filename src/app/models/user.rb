@@ -25,6 +25,14 @@ class User < ApplicationRecord
     return friend_requests.select{|request| friend_ids.exclude?(request.user.id)}
   end
 
+  def self.find_facebook_friends(current_user,friend_uids)
+    @result = User.where("uid in (?)", friend_uids)
+    if current_user.friend_ids.present?
+      @result  = @result.where("id not in (?)",current_user.friend_ids)
+    end
+    return @result
+  end
+
   def display_name
     if provider.present?
       return name
@@ -47,6 +55,10 @@ class User < ApplicationRecord
 
   def friend_confirmed (friend_id)
     friends.any? {|friend| friend.id == friend_id} && friend_requests.any? {|request| request.user_id == friend_id}
+  end
+
+  def is_facebook_user
+    return (provider.present? and provider=="facebook")
   end
 
   def self.users_are_not_already_friends (current_user, search)

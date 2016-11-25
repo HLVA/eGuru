@@ -26,6 +26,8 @@ en:
   friend_invitations: "Friend invitations"
   no_friend_text: "You have no friend now"
   wait_for_confirmation: "Waiting for confirmation..."
+  invite_friend: "Invite friends"
+  no_fb_friend: "Your don't have any facebook friend who is on this web. "
 
   # menu text
   menu:
@@ -40,3 +42,8 @@ en:
     send_messages: "Send messages"
     accept: "Accept"
     edit: "Edit"
+    skip: "Skip"
+    find_others: "Find others"
+  msg:
+    find_facebook_friends_question: "Would you like to find your friends from facebook?"
+    find_friends_question: "Would you like to find friends?"

@@ -39,6 +39,7 @@
 
 		<%= text_field_tag :content, nil, required: true, class: 'form-control form-block', placeholder: "Type a message..." %>
 
+
 		<button id="send-content" type="button">Send</button>
 	</div>
 </div>
@@ -50,7 +51,7 @@ $(function () {
 	$('#send-content').click(function (evt) {
 		var content = $('#content').val();
 		console.log('hello', content);
-		App.global_chat.send_message(content,conversationId);
+		App.global_chat.send_message(content,conversationId,userId);
 	});
 });
 
