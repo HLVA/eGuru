@@ -1,13 +1,20 @@
 
 
 <div class="card card-outline-primary user-card">
-  <div class="row text-center">
-    <h1><p class="row">
-      <%= user.display_name %> </p></h1>
-    </div>
-    <div class="row">
-    <img src="https://raw.githubusercontent.com/HLVA/eGuru/master/src/app/assets/images/eGuruLogo.png" class="avartar-user-list">
-  </div>
-    <%= link_to (t("btn.edit")), edit_user_path, class:"btn btn-primary" %>
-  </div>
+    <div class="card-block">
+      <%= link_to users_path(user.id) do %>
+        <img src="https://raw.githubusercontent.com/HLVA/eGuru/master/src/app/assets/images/eGuruLogo.png" class="avartar-user-list float-xs-left">
+      <% end %>
+
+      <% if action == "add_friend" %>
+      <%= link_to friendships_path(:friend_id=>user.id), method:"post", class:"btn btn-primary btn-sm float-xs-right col-xs"  do %>
+        <span class="menu-icon fa fa-user-plus"></span> <%= t(".btn.add_friend") %>
+      <%end%>
+    <% elsif action == "show" %>
+      <%= link_to friendship_path(:id=>user.id), method:"delete", class: "btn btn-primary btn-sm float-xs-right" do %>
+       <span class="menu-icon fa fa-user-times"></span> <%= t(".btn.remove_friend")%>
+      <% end %>
+    <%end%>
+   <%= link_to user.display_name, users_path(user.id) %>
+ </div>
 </div>

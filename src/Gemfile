@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  # gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
@@ -64,9 +64,11 @@ gem "email_spec"
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'google-api-client', '~> 0.9'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-sass'
 gem 'gmaps4rails'
+gem 'fb_graph2'
 
 # For admin
 gem 'rails_admin', '~> 1.0'
