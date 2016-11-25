@@ -16,5 +16,5 @@ jQuery(document).on 'turbolinks:load', ->
       # messages.append data['message']
       # messages_to_bottom()
 
-    send_message: (message, conversation_id) ->
-      @perform 'send_message', message: message, conversation_id: conversation_id
+    send_message: (message, conversation_id,user_id) ->
+      @perform 'send_message', message: message, conversation_id: conversation_id, user_id: user_id

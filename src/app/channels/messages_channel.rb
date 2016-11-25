@@ -9,7 +9,7 @@ class MessagesChannel < ApplicationCable::Channel
 
   def send_message(data)
     user = User.find(data['user_id'])
-    user.messages.create!(body: data['message'], conversation_id: data['conversation_id'])
+    user.messages.create!(body: data['message'], conversation_id: data['conversation_id'], user_id: data['user_id'])
   end
 
   def test(data)
