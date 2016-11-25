@@ -33,7 +33,7 @@ resources :conversations do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     mount ActionCable.server => '/cable'
 
-  root "temp#index"
+  root "experiences#index"
 
   # For fb login
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

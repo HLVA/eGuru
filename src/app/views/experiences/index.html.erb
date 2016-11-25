@@ -2,39 +2,6 @@
 
 <h1>Experiences</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Location</th>
-      <th>Rating</th>
-      <th>User</th>
-      <th>Category</th>
-      <th>Tag</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @experiences.each do |experience| %>
-      <tr>
-        <td><%= experience.title %></td>
-        <td><%= experience.content %></td>
-        <td><%= experience.location %></td>
-        <td><%= experience.rating %></td>
-        <td><%= experience.user_id %></td>
-        <td><%= experience.category_id %></td>
-        <td><%= experience.tag_id %></td>
-        <td><%= link_to 'Show', experience %></td>
-        <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
-        <td><%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 <%= link_to 'New Experience', new_experience_path %>
 
@@ -44,7 +11,10 @@
       <%= link_to experience.title, experience_path(experience.id), class: 'card-title' %>
       <h6 class="card-subtitle text-muted">Support card subtitle</h6>
     </div>
-    <img src= "" >
+    <% experience.photos.each do |photo| %>
+      <img src= "<%= photo.avatar %>" >  
+    <% end %>
+    
     <div class="card-block">
       <p class="card-text"><%= experience.content %></p>
       <a href="#" class="card-link">Card link</a>
