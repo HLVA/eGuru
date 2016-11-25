@@ -44,6 +44,13 @@ en:
     edit: "Edit"
     skip: "Skip"
     find_others: "Find others"
+    sign_up: "Sign up"
   msg:
     find_facebook_friends_question: "Would you like to find your friends from facebook?"
     find_friends_question: "Would you like to find friends?"
+  label:
+    full_name: "Full name"
+    email: "Email"
+    password: "Password"
+    birthday: "Birthday"
+    country: "Country"

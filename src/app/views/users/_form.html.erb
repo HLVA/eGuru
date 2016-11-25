@@ -1,15 +1,28 @@
 
 <div class="form-group row">
-  <%= form.label :email, class:"col-sm-3" %>
+  <%= form.label (t('label.email') + ' *'), class:"col-sm-3" %>
   <%= form.text_field :email, type: 'email', class:"col-sm-9" %>
 </div>
 
 <div class="form-group row">
-  <%= form.label :password, class:"col-sm-3" %>
+  <%= form.label t('label.full_name') + ' *', class:"col-sm-3" %>
+  <%= form.text_field :name, class:"col-sm-9" %>
+</div>
+<div class="form-group row">
+  <%= form.label t('label.birthday'), class:"col-sm-3" %>
+  <%= form.date_field :birthday, class:"col-sm-9" %>
+</div>
+<div class="form-group row">
+  <%= form.label t('label.country'), class:"col-sm-3" %>
+  <%= form.country_select :country_code, class:"col-sm-4" %>
+</div>
+
+<div class="form-group row">
+  <%= form.label t('label.password') + ' *', class:"col-sm-3" %>
   <%= form.password_field :password, class:"col-sm-9" %>
 </div>
 
 <div class="form-group row">
-  <%= form.submit "Sign Up", class:"btn btn-primary col-sm-3 offset-sm-3" %>
+  <%= form.submit t('btn.sign_up'), class:"btn btn-primary col-sm-3 offset-sm-3" %>
   <%= link_to t(".sign_in"), sign_in_path, class:"btn" %>
 </div>

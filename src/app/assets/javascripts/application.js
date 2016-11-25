@@ -18,6 +18,7 @@
 //= require bootstrap
 //= require underscore
 //= require gmaps/google
+//= require bootstrap-datepicker
 //= require_tree .
 
 
@@ -35,7 +36,7 @@ function getPosition(address, callback){
 	geocoding.geocode({'address': address},function(results, status){
 			if(status == google.maps.GeocoderStatus.OK){
 
-				position = results[0].geometry.location;	
+				position = results[0].geometry.location;
 				callback(position);
 
 			} else {
@@ -43,9 +44,9 @@ function getPosition(address, callback){
 
 			}
 		});
-	} else {			
+	} else {
 		return false;
-	}	
+	}
 };
 
 
@@ -69,4 +70,3 @@ function setMap(address, map_id, info){
 		}
 	);
 };
-

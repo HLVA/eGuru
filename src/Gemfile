@@ -73,3 +73,7 @@ gem 'fb_graph2'
 # For admin
 gem 'rails_admin', '~> 1.0'
 # gem "letter_opener", :group => :development
+
+#datepicker
+gem 'bootstrap-datepicker-rails'
+gem 'country_select'
