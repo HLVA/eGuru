@@ -4,14 +4,20 @@
   <strong>Title:</strong>
   <%= @experience.title %>
 </p>
-  <p>
-    <img src= "<%= @photo.avatar %>" >
   
-</p>
-<p>
-  <strong>Photo content:</strong>
-  <%= @photo.content %>
-</p>
+  <% @experience.photos.each do |photo| %>
+    <p>
+      <img src= "<%= photo.avatar %>" >
+    </p>
+    <p>
+      <strong>Photo content:</strong>
+      <%= photo.content %>
+    </p>
+  <% end %>
+    
+  
+
+
 <p>
   <strong>Content:</strong>
   <%= @experience.content %>

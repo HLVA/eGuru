@@ -13,7 +13,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1.json
   def show
     @experience= Experience.find(params[:id])
-    @photo= Photo.find(@experience.photo_id)
+    # @photo= Photo.find(@experience.photo_id)
 
   end
 
@@ -21,6 +21,7 @@ class ExperiencesController < ApplicationController
   def new
     @photo1= Photo.last
     @experience = Experience.new
+    @experience.photos.new
     @photo= Photo.new
 
     uploader = AvatarUploader.new
@@ -34,9 +35,17 @@ class ExperiencesController < ApplicationController
   # POST /experiences.json
   def create
     @experience = Experience.new(experience_params)
-raise 'abc'
+    count = 0;
     respond_to do |format|
       if @experience.save
+        # if params[:experience][:photos_attributes]
+
+        #   params[:experience][:photos_attributes].each do |photo|
+        #     count = count+1
+        #     @experience.photos.create(avatar: photo[:avatar])
+        #   end
+
+        # end
         format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
         format.json { render :show, status: :created, location: @experience }
 
@@ -80,6 +89,6 @@ raise 'abc'
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:title, :content, :location, :rating, :user_id, :category_id, :tag_id, :report , :photo_id, pictures: [])
+      params.require(:experience).permit(:title, :content, :location, :rating, :user_id, :category_id, :tag_id, :report , :photo_id, :photos_attributes => [:avatar])
     end
 end
