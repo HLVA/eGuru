@@ -4,14 +4,20 @@
       <h3 class="panel-title"> <%= t("basic_info") %></h3>
     </div>
     <div class="panel-body">
-      <div class="card card-block">
-        <h4> <%= @user.display_name %> </h4>
-        <div class="card">
-          <img src= "<%= @user.avatar %>" height="300" width="300" >
+      <div class="card row">
+        <div class="col-sm-3">
+          <img src= "<%= @user.avatar_or_default %>" height="300" width="300" class="picture">
+        </div>
+        <div class="col-sm-1 fence-color"> </div>
+        <div class="col-sm-8">
+          <h4> <%= @user.display_name %>
+            <%= link_to (t("btn.edit")), edit_user_path(@user), class:"btn btn-primary float-xs-right" %>
+            </h4>
         </div>
       </div>
     </div>
   </div>
+  <br />
 
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -24,7 +30,7 @@
         <%= render friendship, :action=>"show"%>
         <%end%>
         <% else %>
-          <p> <%= t('no_friend_text') %> </p>
+        <p> <%= t('no_friend_text') %> </p>
         <% end %>
       </div>
     </div>

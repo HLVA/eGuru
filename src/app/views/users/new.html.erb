@@ -10,9 +10,7 @@
 			  </div>
 
 				<div class="container" >
-				  <%= form_for @user do |form| %>
-				    <%= render partial: '/users/form', object: form %>
-				  <% end %>
+				    <%= render 'form', :user=>@user %>
 				</div>
 			</div>
 		</div>

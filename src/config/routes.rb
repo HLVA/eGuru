@@ -14,21 +14,20 @@ Rails.application.routes.draw do
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
-  resources :users, controller: "users", only: [:create] do
+  resources :users, controller: "users", only: [:create, :update, :edit, :show] do
     resource :password,
       controller: "clearance/passwords",
       only: [ :create, :edit, :update]
   end
-  get '/users/:id', to: 'users#show'
-  get 'show_user' => 'users#show'
-  get 'edit_user' => 'user#edit'
+
   get 'user_profile' => 'users#profile'
+
 resources :conversations do
   resources :messages
  end
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
-  get "/sign_up" => "clearance/users#new", as: "sign_up"
+  get "/sign_up" => "users#new", as: "sign_up"
   get "after_login" => "friendships#after_login"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     mount ActionCable.server => '/cable'

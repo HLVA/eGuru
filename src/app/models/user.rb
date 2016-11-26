@@ -66,6 +66,10 @@ class User < ApplicationRecord
     end
   end
 
+  def persit?
+    return id.present?
+  end
+
   def unfriend(friendship_id)
     @friendship = Friendship.find(friendship_id)
     if @friendship

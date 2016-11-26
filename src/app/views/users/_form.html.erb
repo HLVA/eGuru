@@ -1,4 +1,4 @@
-
+<%= form_for(user) do |form| %>
 <div class="form-group row">
   <%= form.label (t('label.email') + ' *'), class:"col-sm-3" %>
   <%= form.text_field :email, type: 'email', class:"col-sm-9" %>
@@ -17,10 +17,12 @@
   <%= form.country_select :country_code, class:"col-sm-4" %>
 </div>
 
+<% if not user.persit? %>
 <div class="form-group row">
   <%= form.label t('label.password') + ' *', class:"col-sm-3" %>
   <%= form.password_field :password, class:"col-sm-9" %>
 </div>
+<% end %>
 <div class="form-group row">
   <%= form.label t('label.avatar'), :class => 'col-sm-2 control-label'%>
   <div class="col-sm-10">
@@ -29,6 +31,7 @@
 </div>
 
 <div class="form-group row">
-  <%= form.submit t('btn.sign_up'), class:"btn btn-primary col-sm-3 offset-sm-3" %>
+  <%= form.submit (user.persit? ? t('btn.save'): t('btn.sign_up')), class:"btn btn-primary col-sm-3 offset-sm-3" %>
   <%= link_to t(".sign_in"), sign_in_path, class:"btn" %>
 </div>
+<% end %>
