@@ -16,5 +16,14 @@
       <% end %>
     <%end%>
    <%= link_to user.display_name, users_path(user.id) %>
+   <p>
+   <% if user.provider.nil? %>
+    <%= user.email %>
+      <br />
+   <% end %>
+    <%= user.birthday %>
+    <br />
+    <%= user.country_name %>
+  </p>
  </div>
 </div>

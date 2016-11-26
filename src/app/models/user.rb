@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
+  mount_uploader :avatar, AvatarUploader
 
   mount_uploader :avatar, AvatarUploader
-  has_many :conversations, dependent: :destroy
+  has_many :conversations, dependent: :destroy, foreign_key: :recipient_id
   has_many :friendships
   has_many :friends, :through => :friendships
 
@@ -15,7 +16,12 @@ class User < ApplicationRecord
       user.name     = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.email  = auth.uid.to_s + "@dummy.com"
+      user.avatar = auth.info.image
+      if auth.info.email.present?
+        user.email  = auth.info.email
+      else
+        user.email = auth.uid.to_s + "@dummy.com"
+      end
       user.encrypted_password = ""
       user.save(:validate => false)
     end
