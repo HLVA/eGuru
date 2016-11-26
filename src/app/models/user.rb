@@ -58,6 +58,14 @@ class User < ApplicationRecord
     country.translations[I18n.locale.to_s] || country.name
   end
 
+  def avatar_or_default
+    if avatar.present?
+      return avatar
+    else
+      return "https://raw.githubusercontent.com/HLVA/eGuru/master/src/app/assets/images/eGuruLogo.png"
+    end
+  end
+
   def unfriend(friendship_id)
     @friendship = Friendship.find(friendship_id)
     if @friendship

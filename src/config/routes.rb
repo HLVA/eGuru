@@ -42,4 +42,5 @@ resources :conversations do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
+  get 'not_implemented' => "common_pages#not_implemented"
 end
