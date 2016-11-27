@@ -29,6 +29,13 @@
     <%= form.file_field :avatar, accept: "image/jpeg, image/jpg, image/gif, image/png", :class => 'form-control' %>
   </div>
 </div>
+<div class="form-group row" >
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-9">
+    <img src="<%= user.avatar_or_default %>" class="avartar-user-list float-xs-left" width="300" height="300">
+  </div>
+</div>
 
 <div class="form-group row">
   <%= form.submit (user.persit? ? t('btn.save'): t('btn.sign_up')), class:"btn btn-primary col-sm-3 offset-sm-3" %>
