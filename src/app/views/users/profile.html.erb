@@ -10,9 +10,26 @@
         </div>
         <div class="col-sm-1 fence-color"> </div>
         <div class="col-sm-8">
-          <h4> <%= @user.display_name %>
-            <%= link_to (t("btn.edit")), edit_user_path(@user), class:"btn btn-primary float-xs-right" %>
-            </h4>
+          <div class="row col-sm-12">
+            <p class="col-sm-2 label"><h4> <%= @user.display_name %></h4></p>
+          </div>
+
+          <% if @user.provider.nil? %>
+            <div class="row col-sm-12">
+              <p class="col-sm-1 label"> <%=t('label.email') %> </p>
+              <p class="col-sm-5"> <%= @user.email %> </p>
+            </div>
+          <% end %>
+          <div class="row">
+            <%= @user.birthday %>
+          </div>
+          <% if @user.provider.nil? %>
+            <div class="row col-sm-12">
+              <div class="col-sm-1">
+                <%= link_to (t("btn.edit")), edit_user_path(@user), class:"btn btn-primary float-xs-bottom" %>
+              </div>
+            </div>
+        <% end %>
         </div>
       </div>
     </div>
