@@ -1,35 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Question</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Location</th>
-      <th>Rating</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.content %></td>
-        <td><%= question.location %></td>
-        <td><%= question.rating %></td>
-        <td><%= question.user_id %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<% @questions.each do |question| %>
+  <div class="card">
+    <div class="card-block">
+      <a>Question:</a> 
+      <%= link_to question.title, question_path(question.id), class: 'card-title' %>
+    </div>
+    <div class="card-block">
+      <p class="card-text">Content: <%= question.content %></p>
+      <p class="card-text">Rating:<%= question.rating %></p>
+      <p class="card-text">Number of answer:<%= question.answers.size %></p>
+      <a class="card-link"><%= link_to 'Show', question %></a>
+      <a class="card-link"><%= link_to 'Edit', edit_question_path(question)%></a>
+      <a class="card-link"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+      <a class="card-link"><%= link_to 'Add an answer', question_path(question.id)%></a>
+    </div>
+  </div>
+<% end %>
 <br>
 
 <%= link_to 'New Question', new_question_path %>

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :photos
   resources :categories
-  resources :questions
+  resources :questions do 
+    resources :answers
+  end
   get 'about_us' => 'general#aboutus'
   get 'send_mail' => 'general#send_mail'
 
