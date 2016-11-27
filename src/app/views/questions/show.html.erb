@@ -1,29 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<div class="card">
+  <a>Question:</a> 
+  <div class="card-block">
+    <%= link_to @question.title, question_path(@question.id), class: 'card-title' %>
+  </div>
+  <div class="card-block">
+    <p class="card-text">Content: <%= @question.content %></p>
+    <p class="card-text">Rating:<%= @question.rating %></p>
+    <p class="card-text">Number of answer:<%= @question.answers.size %></p>
+    <a class="card-link"><%= link_to 'Edit', edit_question_path(@question)%></a>
+    <a class="card-link"><%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+  </div>
+</div>
+<div class="card">
+  <a>Answer:</a>
+  <% @question.answers.each do |f| %>
+    <div class="card-block">
+        <a class="card-text">#[number]</a>
+        <a class="card-text"><%= f.content %></a>
+        <br/>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @question.content %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @question.location %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @question.rating %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @question.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+  <%= form_for [@question, @answer] do |f| %>
+    <div class="field">
+      <%= f.text_field :content %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
