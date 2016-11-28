@@ -41,6 +41,7 @@ en:
     search: "Search"
     send_messages: "Send messages"
     accept: "Accept"
+    reject: "Reject"
     edit: "Edit"
     skip: "Skip"
     find_others: "Find others"

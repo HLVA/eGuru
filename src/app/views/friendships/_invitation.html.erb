@@ -7,10 +7,15 @@
 
       <div class="float-xs-right">
         <div class="row">
-        <%= link_to accept_friend_path(:friend_id=>friendship.user.id), method:"post", class: "btn btn-primary btn-sm" do %>
-          <span class="menu-icon fa fa-check"></span> <%= t(".btn.accept")%>
-        <% end %>
-      </div>
+          <%= link_to accept_friend_path(:friend_id=>friendship.user.id), method:"post", class: "btn btn-primary btn-sm" do %>
+            <span class="menu-icon fa fa-check"></span> <%= t(".btn.accept")%>
+          <% end %>
+        </div>
+        <div class="row">
+          <%= link_to reject_friend_request_path(:id=>friendship.id), method:"post", class: "btn btn-default btn-sm" do %>
+            <span class="menu-icon fa fa-check"></span> <%= t(".btn.reject")%>
+          <% end %>
+        </div>
     </div>
   </div>
   <%= link_to friendship.user.display_name, users_path(friendship.friend.id) %>

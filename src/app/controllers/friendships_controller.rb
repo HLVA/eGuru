@@ -41,7 +41,13 @@ class FriendshipsController < ApplicationController
         flash[:error] = "Error occurs: " + @friendship.errors.full_messages.to_sentence
         redirect_to(:back)
       end
+  end
 
+  def reject_friend
+    @friendship = Friendship.find(params[:id])
+    @friendship.destroy
+    flash[:success] = "Friend request rejected "
+    redirect_to(:back)
   end
 
   def destroy

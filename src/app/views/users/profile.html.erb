@@ -20,8 +20,9 @@
               <p class="col-sm-5"> <%= @user.email %> </p>
             </div>
           <% end %>
-          <div class="row">
-            <%= @user.birthday %>
+          <div class="row col-sm-12">
+            <p class="col-sm-1 label"> <%=t('label.birthday') %> </p>
+            <p class="col-sm-5"> <%= @user.birthday %> </p>
           </div>
           <% if @user.provider.nil? %>
             <div class="row col-sm-12">
