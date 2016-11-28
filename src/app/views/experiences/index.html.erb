@@ -1,24 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Experiences</h1>
-
-
 <%= link_to 'New Experience', new_experience_path %>
 
 <% @experiences.each do |experience| %>
   <div class="card">
     <div class="card-block">
-      <%= link_to experience.title, experience_path(experience.id), class: 'card-title' %>
-      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-    </div>
-    <% experience.photos.each do |photo| %>
-      <img src= "<%= photo.avatar %>" >  
-    <% end %>
+      <%= link_to experience.title, experience_path(experience.id), class: 'card-title lead' %>
+      <div class="card-subtitle text-muted small">Posted at: <%= experience.created_at %></div>
+    </div>    
     
     <div class="card-block">
-      <p class="card-text"><%= experience.content %></p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <div class="card-text"><%= experience.content %></div>
+      <% experience.photos.each do |photo| %>
+      
+        <img src= "<%= photo.avatar %>" class="experience-image">  
+      <% end %>
     </div>
   </div>
 <% end %>
