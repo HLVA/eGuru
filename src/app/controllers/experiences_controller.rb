@@ -1,7 +1,7 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
    skip_before_filter :verify_authenticity_token
-
+   skip_before_action :require_login, only: [:index, :show]
 
   # GET /experiences
   # GET /experiences.json

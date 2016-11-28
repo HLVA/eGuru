@@ -1,13 +1,13 @@
 <div class="card card-outline-primary user-card">
 
   <div class="card-block">
-      <%= link_to show_user_path(:id=>friendship.friend.id) do %>
-        <img src="https://raw.githubusercontent.com/HLVA/eGuru/master/src/app/assets/images/eGuruLogo.png" class="avartar-user-list float-xs-left">
+      <%= link_to user_path(:id=>friendship.friend.id) do %>
+        <img src="<%= friendship.friend.avatar_or_default %>" class="avartar-user-list float-xs-left" width="100" height="100">
       <% end %>
 
       <% if action == "add_friend" %>
       <%= link_to friendships_path(:friend_id=>friendship.friend.id), method:"post", class:"btn btn-primary btn-sm float-xs-right col-xs"  do %>
-        <span class="menu-icon fa fa-user-plus"></span> <%= t(".btn.add_friend") %>
+        <span class="smenu-icon fa fa-user-plus"></span> <%= t(".btn.add_friend") %>
       <%end%>
     <% elsif action == "show" %>
       <div class="float-xs-right">
@@ -25,7 +25,7 @@
         <%end%>
       </div>
     <%end%>
-    <%= link_to friendship.friend.display_name, show_user_path(:id=>friendship.friend.id) %>
+    <%= link_to friendship.friend.display_name, user_path(:id=>friendship.friend.id) %>
     <% if not current_user.friend_confirmed(friendship.friend.id) %>
       <p> <%= t('wait_for_confirmation') %>
     <%end%>

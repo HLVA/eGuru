@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
 
 
   def new
-    if params[:is_facebook] and params[:is_facebook]==true
+    if params[:is_facebook].present? && params[:is_facebook]=="true"
       @fb_friends = FbGraph2::User.me(current_user.oauth_token).friends
       @users = User.find_facebook_friends(current_user, @fb_friends.map{|friend|friend.id})
     else

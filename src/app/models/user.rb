@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :friend_requests, class_name:"Friendship", foreign_key: :friend_id
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    @user = where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid      = auth.uid
       user.name     = auth.info.name
@@ -25,6 +25,10 @@ class User < ApplicationRecord
       user.encrypted_password = ""
       user.save(:validate => false)
     end
+    @user.oauth_token = auth.credentials.token
+    @user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    @user.save
+    return @user
   end
 
   def unconfirmed_friend_requests
@@ -52,6 +56,18 @@ class User < ApplicationRecord
     end
     country = ISO3166::Country[country_code]
     country.translations[I18n.locale.to_s] || country.name
+  end
+
+  def avatar_or_default
+    if avatar.present?
+      return avatar
+    else
+      return "https://raw.githubusercontent.com/HLVA/eGuru/master/src/app/assets/images/eGuruLogo.png"
+    end
+  end
+
+  def persit?
+    return id.present?
   end
 
   def unfriend(friendship_id)

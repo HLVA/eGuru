@@ -1,4 +1,4 @@
-
+<%= form_for(user) do |form| %>
 <div class="form-group row">
   <%= form.label (t('label.email') + ' *'), class:"col-sm-3" %>
   <%= form.text_field :email, type: 'email', class:"col-sm-9" %>
@@ -14,25 +14,31 @@
 </div>
 <div class="form-group row">
   <%= form.label t('label.country'), class:"col-sm-3" %>
-  <%= form.country_select :country_code, class:"col-sm-4" %>
+  <%= form.country_select :country_code, class:"col-sm-9" %>
 </div>
 
+<% if not user.persit? %>
 <div class="form-group row">
   <%= form.label t('label.password') + ' *', class:"col-sm-3" %>
   <%= form.password_field :password, class:"col-sm-9" %>
 </div>
+<% end %>
 <div class="form-group row">
-  <%= form.label t('label.avatar'), :class => 'col-sm-2 control-label'%>
-  <div class="col-sm-10">
+  <%= form.label t('label.avatar'), :class => 'col-sm-3 control-label'%>
+  <div class="col-sm-9">
     <%= form.file_field :avatar, accept: "image/jpeg, image/jpg, image/gif, image/png", :class => 'form-control' %>
   </div>
 </div>
-
-<div class="form-group row">
-  <%= form.submit t('btn.sign_up'), class:"btn btn-primary col-sm-3 offset-sm-3" %>
-  <%= link_to t(".sign_in"), sign_in_path, class:"btn" %>
+<div class="form-group row" >
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-9">
+    <img src="<%= user.avatar_or_default %>" class="avartar-user-list float-xs-left" width="300" height="300">
+  </div>
 </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="form-group row">
+  <%= form.submit (user.persit? ? t('btn.save'): t('btn.sign_up')), class:"btn btn-primary col-sm-3 offset-sm-3" %>
+  <%= link_to t(".sign_in"), sign_in_path, class:"btn" %>
+</div>
+<% end %>

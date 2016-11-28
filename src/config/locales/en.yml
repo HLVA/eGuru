@@ -45,6 +45,7 @@ en:
     skip: "Skip"
     find_others: "Find others"
     sign_up: "Sign up"
+    save: "Save"
   msg:
     find_facebook_friends_question: "Would you like to find your friends from facebook?"
     find_friends_question: "Would you like to find friends?"
