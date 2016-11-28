@@ -1,0 +1,32 @@
+$(document).on('turbolinks:load', function() {
+  submitNewMessage();
+});
+
+
+
+  App.messages = App.cable.subscriptions.create({channel: 'MessagesChannel'}, {  
+  received: function(data) {
+
+   $("[data-chatroom='" + this.chatroomId + "']").removeClass('hidden')
+    return $("[data-chatroom='" + this.chatroomId + "']").append(data.message);
+  },
+
+  setChatroomId: function(chatroomId) {
+    this.chatroomId = chatroomId
+  }
+});
+
+
+function submitNewMessage(){  
+  $('textarea#message_body').keydown(function(event) {
+    if (event.keyCode == 13) {
+        var msg = event.target.value;
+        var chatroomId = $("[data-chatroom]").data().chatroom;
+
+        App.messages.setChatroomId(chatroomId);
+        App.messages.send({message: msg, conversation_id: chatroomId});
+        $('textarea#message_body').val(" ");
+        return false;
+     }
+  });
+}
