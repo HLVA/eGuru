@@ -10,14 +10,13 @@
     <p class="card-text">Rating:<%= @question.rating %></p>
     <p class="card-text">Number of answer:<%= @question.answers.size %></p>
     <a class="card-link"><%= link_to 'Edit', edit_question_path(@question)%></a>
-    <a class="card-link"><%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %></a>
   </div>
 </div>
 <div class="card">
   <a>Answer:</a>
   <% @question.answers.each do |f| %>
     <div class="card-block">
-        <a class="card-text">#[number]</a>
+        <a class="card-text"><%= f.user.email %> says: </a>
         <a class="card-text"><%= f.content %></a>
         <br/>
     </div>
