@@ -6,7 +6,13 @@ class ExperiencesController < ApplicationController
   # GET /experiences
   # GET /experiences.json
   def index
+  
+    if params[:search]
+    @experiences = Experience.search(params[:search]).order("created_at DESC")
+  else
     @experiences = Experience.all
+
+  end
   end
 
   # GET /experiences/1
