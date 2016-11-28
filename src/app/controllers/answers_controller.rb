@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController	
-before_action :set_question, only: [:show, :edit, :update, :destroy]
+before_action :set_answer, only: [:show, :edit, :update, :destroy]
 	def index
 	end
 
@@ -11,6 +11,8 @@ before_action :set_question, only: [:show, :edit, :update, :destroy]
 
 	def create
     @answer = Answer.new(answer_params)
+
+    @answer.user = current_user
 
     @answer.question = Question.find(params[:question_id])
 
