@@ -3,4 +3,7 @@ class Experience < ApplicationRecord
 	has_many :photos
 	accepts_nested_attributes_for :photos, :allow_destroy => true
 	
+	def self.search(search) 
+		 where("title ILIKE ?","%#{search}%") 
+	end
 end

@@ -2,6 +2,12 @@
 
 <h1>Experiences</h1>
 
+<div class="col-md-3 to_the_right">
+    <%= form_tag(experiences_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search food" %>
+            <%= submit_tag "Search" %>
+            <% end %>
+          </div>
 
 <%= link_to 'New Experience', new_experience_path %>
 
