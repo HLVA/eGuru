@@ -6,6 +6,18 @@
         <%= submit_tag "Search", class: 'form-control' %>
       <% end %>
     </div>
+      <div class="row">
+      <div class="col-md-1">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <%= link_to 'Rating', experiences_path(sort:'rating DESC'), class: "dropdown-item" %>
+          </div>
+        </div>
+    </div>
+    </div>
 
     <%= link_to 'New Experience', new_experience_path %>
     </div>
