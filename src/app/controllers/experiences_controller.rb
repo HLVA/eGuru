@@ -10,7 +10,7 @@ class ExperiencesController < ApplicationController
     if params[:search]
     @experiences = Experience.search(params[:search]).order("created_at DESC")
   else
-    @experiences = Experience.all
+    @experiences = Experience.all.order(params[:sort])
 
   end
   end
