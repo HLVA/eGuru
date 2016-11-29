@@ -26,7 +26,7 @@
 $content-height: 93vh;
 
 body {
-    background-color: #FFF59D;
+    background-color: #BEEBFE;
 }
 
 #header {
@@ -177,3 +177,24 @@ footer{
 .about-us{
 	background-color: white;
 }
+
+.experience-image{
+	padding:1px;
+	border:1px solid #e6e6e6;
+	width: 100%;
+	height: auto;
+}
+
+.experience-image-col{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.experience-image-row{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+/*
+.search-input{
+	size: 50
+}*/

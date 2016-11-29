@@ -96,12 +96,12 @@ ActiveRecord::Schema.define(version: 20162122181126) do
     t.string   "encrypted_password", limit: 128, null: false
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
-    t.string   "avatar"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "avatar"
     t.boolean  "admin"
     t.datetime "birthday"
     t.string   "country_code"

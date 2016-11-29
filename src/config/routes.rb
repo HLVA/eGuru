@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :photos
   resources :categories
-  resources :questions do 
+  resources :questions do
     resources :answers
   end
   get 'about_us' => 'general#aboutus'
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :friendships
   post 'accept_friend' => 'friendships#accept_friend'
+  post 'reject_friend_request' => 'friendships#reject_friend'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]

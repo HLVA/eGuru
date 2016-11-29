@@ -39,6 +39,8 @@
 
 <div class="form-group row">
   <%= form.submit (user.persit? ? t('btn.save'): t('btn.sign_up')), class:"btn btn-primary col-sm-3 offset-sm-3" %>
+  <% if not user.persit? %>
   <%= link_to t(".sign_in"), sign_in_path, class:"btn" %>
+  <% end %>
 </div>
 <% end %>
