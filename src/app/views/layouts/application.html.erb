@@ -34,18 +34,22 @@
 
 
             <% if signed_in? -%>
-              <% if current_user.admin %>
-                <li class="nav-item">
-                  <%= link_to rails_admin_path, class:"" do %>
-                    <span class="menu-icon fa fa-cog"></span>
-                    <%= t('menu.admin') %>
-                  <% end %>
-                </li>
-              <% end %>
               <li class="nav-item">
-                <%= link_to friendships_path, class:"" do %>
-                  <span class="menu-icon fa fa-address-book"></span>
-                  <%= t('Friendships') %>
+                <%= link_to new_experience_path, class:"" do %>
+                  <span class="menu-icon fa fa-pencil-square"></span>
+                  <%= t('Share Experience') %>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_question_path, class:"" do %>
+                  <span class="menu-icon fa fa-question-circle-o"></span>
+                  <%= t('New Question') %>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_friendship_path do %>
+                  <span class="menu-icon fa fa-user-plus"></span>
+                  <%= t(".btn.find_friend") %>
                 <% end %>
               </li>
               <li class="nav-item float-xs-right">
@@ -53,14 +57,15 @@
                   <span class="menu-icon fa fa-sign-out"></span>
                   <%= t(".sign_out") %>
                 <% end %>
-              </li>
-
-              <li class="nav-item float-xs-right">
-                <%= link_to new_friendship_path do %>
-                  <span class="menu-icon fa fa-user-plus"></span>
-                  <%= t(".btn.find_friend") %>
-                <% end %>
-              </li>
+              </li>              
+              <% if current_user.admin %>
+                <li class="nav-item float-xs-right">
+                  <%= link_to rails_admin_path, class:"" do %>
+                    <span class="menu-icon fa fa-cog"></span>
+                    <%= t('menu.admin') %>
+                  <% end %>
+                </li>
+              <% end %>
             <% else %>
               <li class="nav-item float-xs-right">
                 <%= link_to sign_in_path do %>
@@ -103,6 +108,10 @@
                     <%= link_to questions_path, class:"list-group-item list-group-item-success" do %>
                       <i class="fa fa-question-circle"></i> <%= t('questions') %>
                     <% end %>
+
+                    <%= link_to friendships_path, class:"list-group-item list-group-item-success" do %>
+                      <i class="menu-icon fa fa-address-book"></i> <%= t('Friends') %>                      
+                    <% end %>
                     
                   </div>
                 </div>
@@ -111,6 +120,7 @@
               
           </div>
         </div>
+      </div>
     <% else %>
       <%= yield %>
     <% end %>

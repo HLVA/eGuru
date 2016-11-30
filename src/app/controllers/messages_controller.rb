@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   end
 
 def index
+
   p 'conversation id: ' + params[:conversation_id].to_s
   @conversation= Conversation.find(params[:conversation_id])
   p 'message list: ' + @conversation.messages.inspect
@@ -27,6 +28,7 @@ def index
  end
 
 def new
+
  @message = @conversation.messages.new
 end
 

@@ -3,6 +3,7 @@ class MessageBroadcastJob < ApplicationJob
 
   def perform(message)
   	render_result = render_message(message)
+
   	p 'recipient_id la: ' + "conversation-#{message.conversation.recipient_id}"
   	p 'sender la: ' + "conversation-#{message.user_id}"
     ActionCable.server.broadcast "conversation-#{message.conversation.recipient_id}", message: render_result

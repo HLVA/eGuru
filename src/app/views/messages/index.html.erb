@@ -1,19 +1,17 @@
-<div class="panel panel-default">
-  <div class="panel-body" id="messages" data-chatroom=<%=@conversation.recipient_id%> >
-  <% if @messages.any? %>
-    
-
-      <%= render partial: 'messages/message', collection: @messages%>
-    
-  <%else%>
-    <div class="panel-body hidden" id="messages">
-    </div>
-  <%end%>
-  </div>
+<div>
+	<div class="panel panel-default form-control" id="message-container" data-target="#messages" style="height: 400px; overflow-y: scroll; position: relative;">
+	  <div class="panel-body" id="messages" data-spy="scroll" data-offset="50" data-chatroom=<%=@conversation.recipient_id%> >
+	  <% if @messages.any? %>
+	      <%= render partial: 'messages/message', collection: @messages%>   
+	  <%else%>
+	    <div class="panel-body hidden" id="messages">
+	    </div>
+	  <%end%>
+	  </div>
+	</div>
 </div>
 
-
-  <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @conversation.recipient_id}%>
+ <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @conversation.recipient_id}%>
 
 <div class="row col-md-8 col-md-offset-2">
 

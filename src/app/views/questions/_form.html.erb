@@ -10,33 +10,28 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="row">
+    <div class="field col-md-10">      
+      <%= f.text_field :title, placeholder: 'What do you want to ask?', class: 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="field col-md-12">
+      <%= f.text_area :content, placeholder: 'Give us more details, so that we can give you the best answer...', rows: '10', class: 'form-control' %>
+    </div>  
   </div>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+  <div class="row">
+    <div class="field col-md-10">
+      <%= f.text_field :location, placeholder: 'Location...', class: 'form-control' %>
+    </div>
+  </div>
+  <%= f.hidden_field 'user_id', value: current_user.id %>
+  <div class="row">
+    <div class="actions col-md-5">
+      <%= f.submit 'Post', class: 'btn btn-primary' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
-
-  <div class="field">
-    <%= f.label :rating %>
-    <%= f.number_field :rating %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

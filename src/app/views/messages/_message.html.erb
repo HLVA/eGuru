@@ -1,1 +1,7 @@
-<p><strong><%= message.user.email %>:</strong> <%=message.body%></p>
+<div>
+<%= link_to user_profile_path(:id =>message.user.id), class: '' do %>
+              <img src= "<%= message.user.avatar_or_default %>" class="avatar-image-message">
+              <%= message.user.display_name %>
+            <% end %>
+	<p><%=message.body%></p>
+</div>

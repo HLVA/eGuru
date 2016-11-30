@@ -1,19 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <% @questions.each do |question| %>
+
   <div class="card">
     <div class="card-block">
-      <a>Question:</a> 
-      <%= link_to question.title, question_path(question.id), class: 'card-title' %>
-    </div>
+      <%= link_to question.title, question_path(question.id), class: 'card-title lead' %>
+      <div class="card-subtitle text-muted small">Posted at: question.user.display_name <%= question.created_at %> | Posted by: <% if question.user %>
+        <%= link_to question.user.display_name, user_profile_path(:id =>question.user.id) %>
+        <% unless question.user.id == current_user.id %>
+            (<%= link_to conversations_path(sender_id: current_user.id, recipient_id: question.user.id), method: 'post', class:"" do %>
+              <span class="menu-icon fa fa-comments"></span> <%= (t('btn.send_messages'))%>
+            <%end %>)
+          <% end %>
+          
+        <% end %> 
+      </div>
+    </div>    
+    
     <div class="card-block">
-      <p class="card-text">Content: <%= question.content %></p>
-      <p class="card-text">Rating:<%= question.rating %></p>
-      <p class="card-text">Number of answer:<%= question.answers.size %></p>
-      <a class="card-link"><%= link_to 'Show', question %></a>
-      <a class="card-link"><%= link_to 'Edit', edit_question_path(question)%></a>
-      <a class="card-link"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></a>
-      <a class="card-link"><%= link_to 'Add an answer', question_path(question.id)%></a>
+      <div class="card-text"><%= question.content[0..200] + (question.content.length > 200 ? '...' : '').to_s %>
+        <% if question.content.length > 200 %>
+          <%= link_to 'See more', question_path(question.id) %>
+        <% end %>        
+      </div>
+      <a class="card-link"><%= link_to 'Show', question %></a> | 
+      <a class="card-link"><%= link_to 'Edit', edit_question_path(question)%></a> | 
+      <a class="card-link"><%= link_to 'Answer', question_path(question.id)%></a>
     </div>
   </div>
 <% end %>

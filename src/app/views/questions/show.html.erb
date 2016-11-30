@@ -1,33 +1,50 @@
 <p id="notice"><%= notice %></p>
 
 <div class="card">
-  <a>Question:</a> 
   <div class="card-block">
-    <%= link_to @question.title, question_path(@question.id), class: 'card-title' %>
-  </div>
+    <%= link_to @question.title, question_path(@question.id), class: 'card-title lead' %>
+    <div class="card-subtitle text-muted small">Posted at: <%= @question.created_at %> | Posted by: <% if @question.user %>
+      <%= link_to @question.user.display_name, user_profile_path(:id =>@question.user.id) %>
+      <% unless @question.user.id == current_user.id %>
+          (<%= link_to conversations_path(sender_id: current_user.id, recipient_id: @question.user.id), method: 'post', class:"" do %>
+            <span class="menu-icon fa fa-comments"></span> <%= (t('btn.send_messages'))%>
+          <%end %>)
+        <% end %>
+        
+      <% end %> 
+    </div>
+  </div>    
+  
   <div class="card-block">
-    <p class="card-text">Content: <%= @question.content %></p>
-    <p class="card-text">Rating:<%= @question.rating %></p>
-    <p class="card-text">Number of answer:<%= @question.answers.size %></p>
-    <a class="card-link"><%= link_to 'Edit', edit_question_path(@question)%></a>
+    <div class="card-text"><%= @question.content %>
+    </div>
+    <a class="card-link"><%= link_to 'Show', @question %></a> | 
+    <a class="card-link"><%= link_to 'Edit', edit_question_path(@question)%></a> | 
+    <a class="card-link"><%= link_to 'Answer', question_path(@question.id)%></a>
   </div>
 </div>
-<div class="card">
-  <a>Answer:</a>
+
+<div class="card answer-form">
+  <h6 class="card-title">Answers (<%= @question.answers.count %>)</h6>
   <% @question.answers.each do |f| %>
     <div class="card-block">
-        <a class="card-text"><%= f.user.email %> says: </a>
+        <a class="card-text"><%= link_to f.user.display_name, user_profile_path(:id =>f.user.id) %></a>:
         <a class="card-text"><%= f.content %></a>
         <br/>
     </div>
   <% end %>
 
   <%= form_for [@question, @answer] do |f| %>
-    <div class="field">
-      <%= f.text_field :content %>
+    <div class="row">
+      <div class="field col-sm-10">
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>    
     </div>
-    <div class="actions">
-      <%= f.submit %>
+    <div class="row">
+      <div class="col-md-2">
+        <%= f.submit 'Post', class: 'form-control btn btn-primary' %>  
+      </div>
     </div>
+
   <% end %>
 </div>

@@ -1,52 +1,38 @@
 <p id="notice"><%= notice %></p>
+<div>
+  <div class="card">
+      <div class="card-block">
+        <%= link_to @experience.title, experience_path(@experience.id), class: 'card-title lead' %>
+        <div class="card-subtitle text-muted small">Posted at: <%= @experience.created_at %> | Posted by: <% if @experience.user %>
+            <%= link_to @experience.user.display_name, user_profile_path(:id =>@experience.user.id) %>
+            <% unless @experience.user.id == current_user.id %>
+              (<%= link_to conversations_path(sender_id: current_user.id, recipient_id: @experience.user.id), method: 'post', class:"" do %>
+                <span class="menu-icon fa fa-comments"></span> <%= (t('btn.send_messages'))%>
+              <%end %>)
+            <% end %>
+            
+          <% end %>  
+        </div>
+        <div class=""><% (1..@experience.rating.to_i).each do
+      %>
+            <i class="fa fa-star star-score"></i>
+          <% end %>
+        </div>
+      </div>    
+      
+      <div class="card-block">
+        <div class="card-text"><%= @experience.content %></div>
+        <div class="row experience-image-row">
+          <% @experience.photos.each do |photo| %>
+            
+              <div class="col-md-6 experience-image-col">
+                <img src= "<%= photo.avatar %>" class="experience-image">    
+              </div>
+            
+          <% end %>
+        </div>        
+      </div>
+    </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @experience.title %>
-</p>
-  
-  <% @experience.photos.each do |photo| %>
-    <p>
-      <img src= "<%= photo.avatar %>" >
-    </p>
-    <p>
-      <strong>Photo content:</strong>
-      <%= photo.content %>
-    </p>
-  <% end %>
-    
-  
-
-
-<p>
-  <strong>Content:</strong>
-  <%= @experience.content %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @experience.location %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @experience.rating %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @experience.user_id %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @experience.category_id %>
-</p>
-
-<p>
-  <strong>Tag:</strong>
-  <%= @experience.tag_id %>
-</p>
-
-<%= link_to 'Edit', edit_experience_path(@experience) %> |
-<%= link_to 'Back', experiences_path %>
+ 
+</div>

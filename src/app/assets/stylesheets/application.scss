@@ -228,6 +228,15 @@ a.list-group-item-success:hover{
 	border-color: rgba(91, 203, 255, 0.98);
 }
 
+.avatar-image-message{
+	width: 30px;
+	height: 30px;
+	border: 1px solid;
+	padding: 3px;
+	border-radius: 4px;
+	border-color: rgba(91, 203, 255, 0.98);
+}
+
 a.profile-link{
 	padding-top: 30px;
 	padding-left: 10px;
@@ -239,4 +248,30 @@ a.profile-link{
 a.profile-link:hover{
 	background-color: #e9ebee !important;
 	text-decoration: none !important;
+}
+
+.new-form-container{
+	background-color: #fff;
+	padding: 15px;
+}
+
+.list-experiences{
+	margin-top: 20px;
+}
+
+.text-area-message{
+	margin-top: 10px;
+}
+
+.card-block {
+    padding: 0.25rem !important;
+}
+
+.star-score {
+    color: orange;
+}
+
+.answer-form{
+	padding: 15px;
+	margin-left: 15px;
 }

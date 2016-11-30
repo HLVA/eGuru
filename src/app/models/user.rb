@@ -101,6 +101,8 @@ class User < ApplicationRecord
     if search
       @result = @result.where("email like ?","%#{search}%")
     end
+
+    # raise current_user.friend_ids
     return @result
   end
 
